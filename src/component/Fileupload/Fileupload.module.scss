@@ -1,0 +1,25 @@
+.file-upload-section {
+  display: flex;
+  span {
+    margin-right: 10px;
+  }
+  &--files {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &--preview {
+    display: block;
+    width: auto;
+    height: 100px;
+  }
+  &--btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    img {
+      margin-top: 5px;
+    }
+  }
+}
