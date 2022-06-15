@@ -4,6 +4,7 @@ import { useActionContext } from "../contexts/context";
 import Scan from "../containers/Scan/Scan";
 import Write from "../containers/Write/Write";
 import nfc from "../nfc.svg";
+import Fileupload from "../components/FileUpload";
 
 export default function Home() {
 	const { actions, setActions } = useActionContext();
@@ -12,6 +13,15 @@ export default function Home() {
 	const onHandleAction = (actions) => {
 		setActions({ ...actions });
 	};
+
+	function onFileupload(data) {
+		console.log(JSON.stringify(data));
+		const response = fetch("/api/uploadFile", {
+			body: data,
+			method: "POST",
+		});
+		console.log(response);
+	}
 
 	return (
 		<div className="app">
@@ -46,6 +56,7 @@ export default function Home() {
 				</div>
 				{scan && <Scan />}
 				{write && <Write />}
+				<Fileupload onChange={onFileupload} name="trash" />
 			</main>
 
 			<footer className="app__footer">
